@@ -1,24 +1,13 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+fetch('/src/app.html')
+  .then(res => res.text())
+  .then(html => {
+  document.getElementById('app').innerHTML = html;
 
-setupCounter(document.querySelector('#counter'))
+  // fetch is asynchronous, so we need to import the script within fetch so timing issues don't arise (like if we had done it below outside the fetch)
+  const script = document.createElement('script');
+  script.src = "/src/game.js";
+  script.type = "module"; // allows for ES module import/exporting
+  document.body.appendChild(script);  
+});
