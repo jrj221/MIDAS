@@ -1,4 +1,4 @@
-import { initBuildingHover, initCoin, initSaveSystem, initServant, updateWealth, getGameState, resetGameState } from "./initializers";
+import { initBuildingHover, initCoin, initSaveSystem, initServant, updateWealth, getGameState, initResetButton } from "./initializers";
 
 setInterval(() => {
     Game();
@@ -12,12 +12,7 @@ initCoin(gameState.wealth);
 initBuildingHover();
 initSaveSystem(gameState);
 initServant(gameState.wealth, gameState.cps, gameState.numServants, gameState.servantCost);
-
-
-const resetButton = document.getElementById('reset');
-resetButton.addEventListener('click', () => {
-    resetGameState(gameState);
-});
+initResetButton(gameState);
 
 function Game() {
     const wealthText = document.getElementById('wealthText');

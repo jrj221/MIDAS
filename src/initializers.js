@@ -64,18 +64,21 @@ export function getGameState() {
     return gameState;
 }
 
-export function resetGameState(gameState) {
-    // const keys = Object.keys(gameState);
-    // for (let i = 0; i < keys.length; i++) {
-    //     gameState[keys[i]].value = 0;
-    //     // this will need to be changed once gameState is keeping track of stuff that isn't just numbers
-    // }
-    localStorage.setItem('wealth', '0');
-    localStorage.setItem('cps', '0')
-    localStorage.setItem('numServants', '0')
-    localStorage.setItem('servantCost', '10')
-    gameState.wealth.value = 0;
-    gameState.cps.value = 0;
-    gameState.numServants.value = 0;
-    gameState.servantCost.value = 10;
-}   
+
+export function initResetButton(gameState) {
+    const resetButton = document.getElementById('reset');
+    resetButton.addEventListener('click', () => {
+        resetGameState(gameState);
+    });
+
+    function resetGameState(gameState) {
+        localStorage.setItem('wealth', '0');
+        localStorage.setItem('cps', '0')
+        localStorage.setItem('numServants', '0')
+        localStorage.setItem('servantCost', '10')
+        gameState.wealth.value = 0;
+        gameState.cps.value = 0;
+        gameState.numServants.value = 0;
+        gameState.servantCost.value = 10;
+    }   
+}
