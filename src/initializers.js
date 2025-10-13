@@ -27,12 +27,9 @@ export function initCoin(wealth) {
     }
 }
 
-export function getCookie(name) {
-    const cookies = document.cookie.split('; ');
-    for (let cookie of cookies) {
-        const [key, value] = cookie.split('=')
-        if (key == name) {
-            return value; // return cookie value 
-        }
-    }
+export function initSaveSystem(wealth) {
+    window.addEventListener('beforeunload', () => {
+        // maybe move this to a saveWealth function which can be called at intervals to backup not just when you close the tab
+        localStorage.setItem('wealth', String(wealth.value));
+    });
 }

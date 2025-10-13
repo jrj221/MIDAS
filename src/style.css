@@ -11,6 +11,13 @@ img {
   -webkit-user-drag: none; /* Prevent ghost-dragging */
 }
 
+.buildingSelect {
+  margin: 1px;
+  width: calc((100%/3) - 1px); 
+  display: inline-block; 
+  height: 78px;
+}
+
 #buildings { /*Sidebar for individual building elements*/
   background-color: brown; 
   width: calc(100%/3); 
