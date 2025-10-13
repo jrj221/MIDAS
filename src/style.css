@@ -11,13 +11,6 @@ img {
   -webkit-user-drag: none; /* Prevent ghost-dragging */
 }
 
-.buildingSelect {
-  margin: 1px;
-  width: calc((100%/3) - 1px); 
-  display: inline-block; 
-  height: 78px;
-}
-
 #buildings { /*Sidebar for individual building elements*/
   background-color: brown; 
   width: calc(100%/3); 
@@ -28,13 +21,23 @@ img {
 
 .building {
   display: flex;
+  flex-direction: column;
   background-color: gray;
-  font-size: 25px;
+  font-size: 20px;
   height: 80px;
   border: 3px inset darkgray;
   opacity: .9;
   align-items: center;
   justify-content: center;
+}
+
+#servantCostText {
+  height: 30px;
+  display: block;
+}
+.buildingName {
+  height: 30px;
+  display: block;
 }
 
 .building.hovered {

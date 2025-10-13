@@ -1,11 +1,17 @@
 
-<div style="background-color: goldenrod; width: calc(100%/3); display: inline-block; height: 100vh;"></div>
+<div style="background-color: goldenrod; width: calc(100%/3); display: inline-block; height: 100vh;">
+    <span id="reset" style="font-size: 16pt; border: black 2px solid; background-color: white; padding: 4px">RESET</span>
+</div>
 <div style="background-color: silver; width: calc(100%/3); display: inline-block; height: 100vh; text-align: center;">
-    <h1 style="color: black; font-size: 16pt;" id="test"></h1>
+    <h1 style="color: black; font-size: 16pt;" id="wealthText"></h1>
+    <h1 style="color: black; font-size: 15pt;" id="cpsText"></h1>
     <img style="width: 40%; clip-path: circle(50%)" src="/coin.png" id="coin">
 </div>
 <div id="buildings">
-    <div class="building"><div class="buildingSelect">Building 1</div></div>
-    <div class="building"><div class="buildingSelect">Building 1</div></div>
-    <div class="building"><div class="buildingSelect">Building 1</div></div>
+    <div class="building" id="servant">
+        <div class="buildingName">Building 1</div>
+        <div id="servantCostText"></div>
+    </div>
+    <div class="building">Building 2</div>
+    <div class="building">Building 3</div>
 </div>
