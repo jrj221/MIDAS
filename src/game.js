@@ -13,14 +13,20 @@ initSaveSystem(gameState);
 initServant(gameState.wealth, gameState.cps, gameState.numServants, gameState.servantCost);
 initResetButton(gameState);
 
+
 function Game() {
     const wealthText = document.getElementById('wealthText');
     wealthText.textContent = `Hello King Midas! You have accumulated $${gameState.wealth.value}`;
     const cpsText = document.getElementById('cpsText');
     cpsText.textContent = `Coins per Second: ${gameState.cps.value}`;
     const servantCostText = document.getElementById('servantCostText');
-    servantCostText.textContent = `Cost: ${gameState.servantCost.value}`
+    servantCostText.textContent = `Cost: ${gameState.servantCost.value}`;
+    const merchantCostText = document.getElementById('merchantCostText');
+    merchantCostText.textContent = `Cost: ${gameState.merchantCost.value}`;
+    const templeCostText = document.getElementById('templeCostText');
+    templeCostText.textContent = `Cost: ${gameState.templeCost.value}`
 
+    
     checkIfCanAfford(gameState);
 
     let currTime = performance.now(); // time in milliseconds since page started

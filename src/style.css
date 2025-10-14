@@ -19,8 +19,29 @@ img {
   overflow: auto;
 }
 
+.frame {
+  background-image: url("/testFrame.png");
+  background-size: 100% 100%;
+}
+
+.picture {
+  position: absolute;
+  border: 3px solid black;
+  width: 68px;
+  height: 68px;
+  top: 3px;
+  left: 3px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.content {
+  display: inline-block;
+}
+
 .building {
   display: flex;
+  position: relative;
   flex-direction: column;
   background-color: gray;
   font-size: 20px;

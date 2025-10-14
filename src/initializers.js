@@ -60,7 +60,9 @@ export function getGameState() {
         wealth: { value: isNaN(Number(localStorage.getItem("wealth"))) ? 0 : Number(localStorage.getItem("wealth"))}, // sets wealth to be an object, which can be safely passed by reference into initCoin
         cps: { value: isNaN(Number(localStorage.getItem("cps"))) ? 0 : Number(localStorage.getItem("cps"))},
         numServants: { value: isNaN(Number(localStorage.getItem("numServant"))) ? 0 : Number(localStorage.getItem("numServant"))},
-        servantCost : { value: isNaN(Number(localStorage.getItem("servantCost"))) ? 10 : Number(localStorage.getItem("servantCost"))}
+        servantCost : { value: isNaN(Number(localStorage.getItem("servantCost"))) ? 10 : Number(localStorage.getItem("servantCost"))},
+        merchantCost : { value: isNaN(Number(localStorage.getItem("merchantCost"))) ? 100 : Number(localStorage.getItem("merchantCost"))},
+        templeCost : { value: isNaN(Number(localStorage.getItem("templeCost"))) ? 1000 : Number(localStorage.getItem("templeCost"))}
     }
     return gameState;
 }
@@ -77,10 +79,14 @@ export function initResetButton(gameState) {
         localStorage.setItem('cps', '0')
         localStorage.setItem('numServants', '0')
         localStorage.setItem('servantCost', '10')
+        localStorage.setItem('merchantCost', '100')
+        localStorage.setItem('servantCost', '1000')
         gameState.wealth.value = 0;
         gameState.cps.value = 0;
         gameState.numServants.value = 0;
         gameState.servantCost.value = 10;
+        gameState.merchantCost.value = 100;
+        gameState.templeCost.value = 1000;
     }   
 }
 
@@ -89,6 +95,8 @@ export function checkIfCanAfford(gameState) {
     // eventually loops over all the buildings or something
     const buildings = [
         'servant',
+        'merchant',
+        'temple',
     ]
     buildings.forEach((buildingID) => {
         const building = document.getElementById(buildingID);
