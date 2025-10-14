@@ -31,18 +31,14 @@ img {
   justify-content: center;
 }
 
-#servantCostText {
-  height: 30px;
-  display: block;
-}
-.buildingName {
-  height: 30px;
-  display: block;
-}
-
 .building.hovered {
   border-style: outset;
   opacity: 1;
+}
+
+.building.canAfford {
+  background-color: whitesmoke;
+  border: 5px inset gold;
 }
 
 #app {

@@ -1,4 +1,4 @@
-import { initBuildingHover, initCoin, initSaveSystem, initServant, updateWealth, getGameState, initResetButton } from "./initializers";
+import { initBuildingHover, initCoin, initSaveSystem, initServant, updateWealth, getGameState, initResetButton, checkIfCanAfford } from "./initializers";
 
 setInterval(() => {
     Game();
@@ -6,7 +6,6 @@ setInterval(() => {
 
 var lastTime = 0 // timestamp of last time we updated wealth
 const gameState = getGameState();
-console.log('gameState gotten')
 
 initCoin(gameState.wealth);
 initBuildingHover();
@@ -21,6 +20,8 @@ function Game() {
     cpsText.textContent = `Coins per Second: ${gameState.cps.value}`;
     const servantCostText = document.getElementById('servantCostText');
     servantCostText.textContent = `Cost: ${gameState.servantCost.value}`
+
+    checkIfCanAfford(gameState);
 
     let currTime = performance.now(); // time in milliseconds since page started
     if (((currTime - lastTime) / 1000) >= 1) { // its been 1 second since we updated wealth

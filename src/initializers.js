@@ -54,6 +54,7 @@ export function updateWealth(wealth, cps) {
     wealth.value += cps.value;
 }
 
+
 export function getGameState() {
     const gameState = {
         wealth: { value: isNaN(Number(localStorage.getItem("wealth"))) ? 0 : Number(localStorage.getItem("wealth"))}, // sets wealth to be an object, which can be safely passed by reference into initCoin
@@ -81,4 +82,22 @@ export function initResetButton(gameState) {
         gameState.numServants.value = 0;
         gameState.servantCost.value = 10;
     }   
+}
+
+
+export function checkIfCanAfford(gameState) {
+    // eventually loops over all the buildings or something
+    const buildings = [
+        'servant',
+    ]
+    buildings.forEach((buildingID) => {
+        const building = document.getElementById(buildingID);
+        const costKey = buildingID + 'Cost'; // e.g. 'servantCost'
+        if (gameState.wealth.value >= gameState[costKey].value) {
+            building.classList.add('canAfford');
+        }
+        else {
+            building.classList.remove('canAfford');
+        }
+    });
 }
