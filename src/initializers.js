@@ -62,7 +62,7 @@ export function getGameState() {
         numServants: { value: isNaN(Number(localStorage.getItem("numServant"))) ? 0 : Number(localStorage.getItem("numServant"))},
         servantCost : { value: isNaN(Number(localStorage.getItem("servantCost"))) ? 10 : Number(localStorage.getItem("servantCost"))},
         merchantCost : { value: isNaN(Number(localStorage.getItem("merchantCost"))) ? 100 : Number(localStorage.getItem("merchantCost"))},
-        templeCost : { value: isNaN(Number(localStorage.getItem("templeCost"))) ? 1000 : Number(localStorage.getItem("templeCost"))}
+        templeCost : { value: isNaN(Number(localStorage.getItem("templeCost"))) ? 1000 : Number(localStorage.getItem("templeCost"))},
     }
     return gameState;
 }
@@ -76,11 +76,11 @@ export function initResetButton(gameState) {
 
     function resetGameState(gameState) {
         localStorage.setItem('wealth', '0');
-        localStorage.setItem('cps', '0')
-        localStorage.setItem('numServants', '0')
-        localStorage.setItem('servantCost', '10')
-        localStorage.setItem('merchantCost', '100')
-        localStorage.setItem('servantCost', '1000')
+        localStorage.setItem('cps', '0');
+        localStorage.setItem('numServants', '0');
+        localStorage.setItem('servantCost', '10');
+        localStorage.setItem('merchantCost', '100');
+        localStorage.setItem('templeCost', '1000');
         gameState.wealth.value = 0;
         gameState.cps.value = 0;
         gameState.numServants.value = 0;

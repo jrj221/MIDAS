@@ -36,7 +36,14 @@ img {
 }
 
 .content {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 38px;
+  width: calc(100% - 77px);
+  height: 74px; 
 }
 
 .building {
@@ -50,6 +57,18 @@ img {
   opacity: .9;
   align-items: center;
   justify-content: center;
+}
+
+.cost::before {
+  content: "";
+  position: relative;
+  top: 1.5px;
+  right: 2px;
+  background-image: url("/coin.png");
+  background-size: cover;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
 }
 
 .building.hovered {

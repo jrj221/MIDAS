@@ -8,21 +8,25 @@
     <img style="width: 40%; clip-path: circle(50%)" src="/coin.png" id="coin">
 </div>
 <div id="buildings">
-    <div class="building frame" id="servant">
+    <div class="building" id="servant">
         <div class="picture" style="background-image: url('/pickaxe.png');"></div>
-        <div class="content">
+        <div class="content frame">
             <div>Miners</div>
-            <div id="servantCostText"></div>
+            <div id="servantCostText" class="cost"></div>
         </div>
     </div>
-    <div class="building frame">
+    <div class="building" id="merchant">
         <div class="picture" style="background-image: url('/merchant.png');"></div>
-        <div>Merchant Caravans</div>
-        <div id="merchantCostText"></div>
+        <div class="content frame">
+            <div>Merchant Caravans</div>
+            <div id="merchantCostText" class="cost"></div>
+        </div>
     </div>
-    <div class="building frame">
+    <div class="building" id="temple">
         <div class="picture" style="background-image: url('/temple.png');"></div>
-        <div>Worshippers</div>
-        <div id="templeCostText"></div>
+        <div class="content frame">
+            <div>Worshippers</div>
+            <div id="templeCostText" class="cost"></div>
+        </div>
     </div>
 </div>

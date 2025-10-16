@@ -20,11 +20,11 @@ function Game() {
     const cpsText = document.getElementById('cpsText');
     cpsText.textContent = `Coins per Second: ${gameState.cps.value}`;
     const servantCostText = document.getElementById('servantCostText');
-    servantCostText.textContent = `Cost: ${gameState.servantCost.value}`;
+    servantCostText.textContent = `${gameState.servantCost.value}`;
     const merchantCostText = document.getElementById('merchantCostText');
-    merchantCostText.textContent = `Cost: ${gameState.merchantCost.value}`;
+    merchantCostText.textContent = `${gameState.merchantCost.value}`;
     const templeCostText = document.getElementById('templeCostText');
-    templeCostText.textContent = `Cost: ${gameState.templeCost.value}`
+    templeCostText.textContent = `${gameState.templeCost.value}`
 
     
     checkIfCanAfford(gameState);
