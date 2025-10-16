@@ -1,4 +1,4 @@
-import { initBuildingHover, initCoin, initSaveSystem, initServant, updateWealth, getGameState, initResetButton, checkIfCanAfford } from "./initializers";
+import { initBuildingHover, initCoin, initSaveSystem, initBuildings, updateWealth, getGameState, initResetButton, checkIfCanAfford } from "./initializers";
 
 setInterval(() => {
     Game();
@@ -10,15 +10,15 @@ const gameState = getGameState();
 initCoin(gameState.wealth);
 initBuildingHover();
 initSaveSystem(gameState);
-initServant(gameState.wealth, gameState.cps, gameState.numServants, gameState.servantCost);
+initBuildings(gameState);
 initResetButton(gameState);
 
 
 function Game() {
     const wealthText = document.getElementById('wealthText');
-    wealthText.textContent = `Hello King Midas! You have accumulated $${gameState.wealth.value}`;
+    wealthText.textContent = `${Math.floor(gameState.wealth.value)} Coins`;
     const cpsText = document.getElementById('cpsText');
-    cpsText.textContent = `Coins per Second: ${gameState.cps.value}`;
+    cpsText.textContent = `per Second: ${gameState.cps.value.toFixed(1)}`;
     const servantCostText = document.getElementById('servantCostText');
     servantCostText.textContent = `${gameState.servantCost.value}`;
     const merchantCostText = document.getElementById('merchantCostText');

@@ -31,23 +31,46 @@ export function initSaveSystem(gameState) {
     window.addEventListener('beforeunload', () => {
         // maybe move this to a saveWealth function which can be called at intervals to backup not just when you close the tab
         localStorage.setItem('wealth', String(gameState.wealth.value));
-        localStorage.setItem('cps', String(gameState.cps.value))
-        localStorage.setItem('numServants', String(gameState.numServants.value))
-        localStorage.setItem('servantCost', String(gameState.servantCost.value))
+        localStorage.setItem('cps', String(gameState.cps.value));
+
+        localStorage.setItem('servantNum', String(gameState.servantNum.value));
+        localStorage.setItem('servantEffect', String(gameState.servantEffect.value));
+        localStorage.setItem('servantCost', String(gameState.servantCost.value));
+
+        localStorage.setItem('merchantNum', String(gameState.merchantNum.value));
+        localStorage.setItem('merchantEffect', String(gameState.merchantEffect.value));
+        localStorage.setItem('merchantCost', String(gameState.merchantCost.value));
+
+        localStorage.setItem('templeNum', String(gameState.templeNum.value));
+        localStorage.setItem('templeEffect', String(gameState.templeEffect.value));
+        localStorage.setItem('templeCost', String(gameState.templeCost.value));
     });
 }
 
-export function initServant(wealth, cps, numServant, cost) {
-    let effect = 1; // cps increase
-    const servant = document.getElementById('servant')
-    servant.addEventListener('click', () => {
-        if (wealth.value >= cost.value) {
-            numServant.value++;
-            wealth.value -= cost.value;
-            cost.value = Math.round(cost.value * 1.15);
-            cps.value += effect;
-        }
-    });    
+export function initBuildings(gameState) {
+    const buildings = [
+        'servant',
+        'merchant',
+        'temple',
+    ]
+    buildings.forEach((buildingID) => {
+        const costKey = buildingID + "Cost";
+        const numKey = buildingID + "Num";
+        const effectKey = buildingID + "Effect";
+        initBuilding(buildingID, gameState[effectKey], gameState.wealth, gameState.cps, gameState[numKey], gameState[costKey])
+    });
+
+    function initBuilding(buildingID, cpsEffect, wealth, cps, numBuilding, cost) {
+        const servant = document.getElementById(buildingID)
+        servant.addEventListener('click', () => {
+            if (wealth.value >= cost.value) {
+                numBuilding.value++;
+                wealth.value -= cost.value;
+                cost.value = Math.round(cost.value * 1.15);
+                cps.value += cpsEffect.value;
+            }
+        });    
+    }
 }
 
 export function updateWealth(wealth, cps) {
@@ -59,9 +82,17 @@ export function getGameState() {
     const gameState = {
         wealth: { value: isNaN(Number(localStorage.getItem("wealth"))) ? 0 : Number(localStorage.getItem("wealth"))}, // sets wealth to be an object, which can be safely passed by reference into initCoin
         cps: { value: isNaN(Number(localStorage.getItem("cps"))) ? 0 : Number(localStorage.getItem("cps"))},
-        numServants: { value: isNaN(Number(localStorage.getItem("numServant"))) ? 0 : Number(localStorage.getItem("numServant"))},
+        
+        servantNum: { value: isNaN(Number(localStorage.getItem("servantNum"))) ? 0 : Number(localStorage.getItem("servantNum"))},
+        servantEffect: { value: isNaN(Number(localStorage.getItem("servantEffect"))) ? 0.1 : Number(localStorage.getItem("servantEffect"))},
         servantCost : { value: isNaN(Number(localStorage.getItem("servantCost"))) ? 10 : Number(localStorage.getItem("servantCost"))},
+        
+        merchantNum: { value: isNaN(Number(localStorage.getItem("merchantNum"))) ? 0 : Number(localStorage.getItem("merchantNum"))},
+        merchantEffect: { value: isNaN(Number(localStorage.getItem("merchantEffect"))) ? 1 : Number(localStorage.getItem("merchantEffect"))},
         merchantCost : { value: isNaN(Number(localStorage.getItem("merchantCost"))) ? 100 : Number(localStorage.getItem("merchantCost"))},
+        
+        templeNum: { value: isNaN(Number(localStorage.getItem("templeNum"))) ? 0 : Number(localStorage.getItem("templeNum"))},
+        templeEffect: { value: isNaN(Number(localStorage.getItem("templeEffect"))) ? 15 : Number(localStorage.getItem("templeEffect"))},
         templeCost : { value: isNaN(Number(localStorage.getItem("templeCost"))) ? 1000 : Number(localStorage.getItem("templeCost"))},
     }
     return gameState;
@@ -71,21 +102,30 @@ export function getGameState() {
 export function initResetButton(gameState) {
     const resetButton = document.getElementById('reset');
     resetButton.addEventListener('click', () => {
+        localStorage.clear();
         resetGameState(gameState);
     });
 
     function resetGameState(gameState) {
-        localStorage.setItem('wealth', '0');
-        localStorage.setItem('cps', '0');
-        localStorage.setItem('numServants', '0');
-        localStorage.setItem('servantCost', '10');
-        localStorage.setItem('merchantCost', '100');
-        localStorage.setItem('templeCost', '1000');
+        // localStorage.setItem('wealth', '0');
+        // localStorage.setItem('cps', '0');
+        // localStorage.setItem('servantNum', '0');
+        // localStorage.setItem('servantCost', '10');
+        // localStorage.setItem('merchantCost', '100');
+        // localStorage.setItem('templeCost', '1000');
         gameState.wealth.value = 0;
         gameState.cps.value = 0;
-        gameState.numServants.value = 0;
+
+        gameState.servantNum.value = 0;
+        gameState.servantEffect.value = 0.1;
         gameState.servantCost.value = 10;
+        
+        gameState.merchantNum.value = 0;
+        gameState.merchantEffect.value = 1;
         gameState.merchantCost.value = 100;
+        
+        gameState.templeNum.value = 0;
+        gameState.templeEffect.value = 15;
         gameState.templeCost.value = 1000;
     }   
 }
