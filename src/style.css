@@ -59,6 +59,23 @@ img {
   justify-content: center;
 }
 
+.upgradePicture {
+  background-image: url("/coin.png");
+  background-size: cover;
+  width: 55px;
+  height: 55px;
+}
+
+.upgrade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border: 2px solid gold;
+  width: 60px;
+  height: 60px;
+}
+
 .cost::before {
   content: "";
   position: relative;
